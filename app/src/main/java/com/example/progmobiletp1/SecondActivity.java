@@ -1,22 +1,22 @@
 package com.example.progmobiletp1;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.progmobiletp1.R;
 
-public class MainActivity extends AppCompatActivity
+public class SecondActivity extends AppCompatActivity
 {
 
-    String CYCLEVIEPREFS = "cycle_vie_prefs";
+
     /**
      * Exécuté chaque fois que l'utilisateur clique sur l'icône de l'application pour une première fois.
      *
@@ -26,12 +26,8 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btnQuitter = (Button) findViewById(R.id.btnQuitter);
-        btnQuitter.setOnClickListener(btnQuitterOnClickListener);
-        Button btnEnvoyer = (Button) findViewById(R.id.btnEnvoyer);
-        btnEnvoyer.setOnClickListener(btnEnvoyerOnClickListener);
-        Button btnAct2 = (Button) findViewById(R.id.btnAct2);
-        btnAct2.setOnClickListener(btnAct2OnClickListener);
+
+        TextView tv = findViewById(R.id.textView1);
         popUp("onCreate()");
     }
     /** =============================================================
@@ -52,8 +48,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
-        setTxtValeur(settings.getString("cle", ""));
         popUp("onStart()");
     }
     /** ==============================================================
@@ -84,10 +78,6 @@ public class MainActivity extends AppCompatActivity
             popUp("onPause, l'utilisateur à demandé la fermeture via un finish()");
         } else {
             popUp("onPause, l'utilisateur n'a pas demandé la fermeture via un finish()");
-            SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putString("cle", getTxtValeur());
-            editor.commit();
         }
     }
     /** ==============================================================
@@ -117,40 +107,8 @@ public class MainActivity extends AppCompatActivity
         popUp("onDestroy()");
     }
     //=================================================================
-    View.OnClickListener btnQuitterOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            finish();
-        }
-    };
-
-    View.OnClickListener btnEnvoyerOnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            popUp("valeur saisie = " + getTxtValeur());
-        }
-    };
-
-    View.OnClickListener btnAct2OnClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent intent = new Intent(v.getContext(), SecondActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    };
-
-    public String getTxtValeur() {
-        EditText zoneValeur = (EditText) findViewById(R.id.editTxtValeur);
-        return zoneValeur.getText().toString();
-    }
-
-    public void setTxtValeur(String valeur) {
-        EditText zoneValeur = (EditText) findViewById(R.id.editTxtValeur);
-        zoneValeur.setText(valeur);
-    }
 
     public void popUp(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Activité 2 "+message, Toast.LENGTH_LONG).show();
     }
 }

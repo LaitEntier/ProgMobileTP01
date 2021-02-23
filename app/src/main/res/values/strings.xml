@@ -2,6 +2,6 @@
     <string name="app_name">Cycle de Vie</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notification s</string>
+    <string name="title_notifications">Notifications</string>
     <string name="str_test">test</string>
 </resources>

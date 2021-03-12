@@ -17,5 +17,24 @@
             android:layout_height="wrap_content"
             android:text="Bienvenue dans l'activité 2">
         </TextView>
+        <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:text="Valeur" android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </TextView>
+            <EditText android:text="" android:id="@+id/editTxtValeur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:width="150dip">
+            </EditText>
+        </LinearLayout>
+        android:orientation="horizontal" android:layout_width="fill_parent"
+        android:gravity="center_vertical|center_horizontal">
+        <Button android:text="Retour" android:id="@+id/btnRetour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </Button>
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

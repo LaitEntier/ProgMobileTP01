@@ -1,6 +1,7 @@
 package com.example.progmobiletp1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -16,7 +17,7 @@ import com.example.progmobiletp1.R;
 public class SecondActivity extends AppCompatActivity
 {
 
-
+    String CYCLEVIEPREFS = "cycle_vie_prefs";
     /**
      * Exécuté chaque fois que l'utilisateur clique sur l'icône de l'application pour une première fois.
      *
@@ -25,9 +26,11 @@ public class SecondActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        TextView tv = findViewById(R.id.textView1);
+        setContentView(R.layout.second_activity);
+        Button btnRetour = (Button) findViewById(R.id.btnRetour);
+        btnRetour.setOnClickListener(btnRetourOnClickListener);
+        //TextView tv = findViewById(R.id.textView1);
         popUp("onCreate()");
     }
     /** =============================================================
@@ -48,6 +51,8 @@ public class SecondActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
+        SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
+        setTxtValeur(settings.getString("cle", ""));
         popUp("onStart()");
     }
     /** ==============================================================
@@ -107,8 +112,21 @@ public class SecondActivity extends AppCompatActivity
         popUp("onDestroy()");
     }
     //=================================================================
+    View.OnClickListener btnRetourOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    };
 
     public void popUp(String message) {
         Toast.makeText(this, "Activité 2 "+message, Toast.LENGTH_LONG).show();
+    }
+
+    public void setTxtValeur(String valeur) {
+        EditText zoneValeur = (EditText) findViewById(R.id.editTxtValeur);
+        zoneValeur.setText(valeur);
     }
 }

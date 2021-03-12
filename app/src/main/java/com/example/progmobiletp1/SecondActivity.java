@@ -28,15 +28,23 @@ public class SecondActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
+
+        //Exercice 3 - Passe une valeur entre les Activity avec Bundle
+        /*
+        if (savedInstanceState != null){
+            cycle_vie_prefs = (EditText) findViewById(R.id.editTxtValeur);
+            String cycleViePrefs = savedInstanceState.getString(CYCLEVIEPREFS);
+            setTxtValeur(cycleViePrefs);
+        }
+        */
+
+        //Exercice 2 - Passe une valeur entre les Activity avec l'intent
         cycle_vie_prefs = (EditText) findViewById(R.id.editTxtValeur);
-
         String cycleViePrefs = getIntent().getStringExtra(CYCLEVIEPREFS);
-
         setTxtValeur(cycleViePrefs);
 
         Button btnRetour = (Button) findViewById(R.id.btnRetour);
         btnRetour.setOnClickListener(btnRetourOnClickListener);
-        //TextView tv = findViewById(R.id.textView1);
         popUp("onCreate()");
     }
     /** =============================================================
@@ -57,9 +65,11 @@ public class SecondActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
+
         //Exercice 1 - Passe une valeur entre les Activity avec SharedPreferences
         //SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
         //setTxtValeur(settings.getString("cle", ""));
+
         popUp("onStart()");
     }
     /** ==============================================================
@@ -118,6 +128,16 @@ public class SecondActivity extends AppCompatActivity
         super.onDestroy();
         popUp("onDestroy()");
     }
+
+    //Exercice 3 - Passe une valeur entre les Activity avec Bundle
+    /*
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        String cycleViePrefs = savedInstanceState.getString(CYCLEVIEPREFS);
+        setTxtValeur(cycleViePrefs);
+    }
+    */
+
     //=================================================================
     View.OnClickListener btnRetourOnClickListener = new View.OnClickListener() {
         @Override

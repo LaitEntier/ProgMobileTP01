@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity
 {
 
     String CYCLEVIEPREFS = "cycle_vie_prefs";
+
     /**
      * Exécuté chaque fois que l'utilisateur clique sur l'icône de l'application pour une première fois.
      *
@@ -150,6 +151,13 @@ public class MainActivity extends AppCompatActivity
         EditText zoneValeur = (EditText) findViewById(R.id.editTxtValeur);
         zoneValeur.setText(valeur);
     }
+
+    /*
+    protected void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putString(CYCLEVIEPREFS,getTxtValeur());
+    }
+    */
 
     public void popUp(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();

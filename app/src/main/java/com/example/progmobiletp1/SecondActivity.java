@@ -17,6 +17,7 @@ import com.example.progmobiletp1.R;
 public class SecondActivity extends AppCompatActivity
 {
 
+    EditText cycle_vie_prefs;
     String CYCLEVIEPREFS = "cycle_vie_prefs";
     /**
      * Exécuté chaque fois que l'utilisateur clique sur l'icône de l'application pour une première fois.
@@ -26,8 +27,13 @@ public class SecondActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.second_activity);
+        cycle_vie_prefs = (EditText) findViewById(R.id.editTxtValeur);
+
+        String cycleViePrefs = getIntent().getStringExtra(CYCLEVIEPREFS);
+
+        setTxtValeur(cycleViePrefs);
+
         Button btnRetour = (Button) findViewById(R.id.btnRetour);
         btnRetour.setOnClickListener(btnRetourOnClickListener);
         //TextView tv = findViewById(R.id.textView1);
@@ -51,8 +57,9 @@ public class SecondActivity extends AppCompatActivity
     @Override
     protected void onStart() {
         super.onStart();
-        SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
-        setTxtValeur(settings.getString("cle", ""));
+        //Exercice 1 - Passe une valeur entre les Activity avec SharedPreferences
+        //SharedPreferences settings = getSharedPreferences(CYCLEVIEPREFS, Context.MODE_PRIVATE);
+        //setTxtValeur(settings.getString("cle", ""));
         popUp("onStart()");
     }
     /** ==============================================================

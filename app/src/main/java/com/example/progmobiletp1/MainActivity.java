@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), SecondActivity.class);
+            intent.putExtra(CYCLEVIEPREFS,getTxtValeur());
             startActivity(intent);
             finish();
         }
